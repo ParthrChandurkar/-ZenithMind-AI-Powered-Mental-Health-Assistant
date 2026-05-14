@@ -2,8 +2,6 @@
 
 > A full-stack digital mental wellness ecosystem combining **Cognitive Behavioral Therapy (CBT)**, **AI-driven mood analytics**, and **gamified self-care** — built for students and young professionals.
 
-> 📄 *Based on the research paper: "ZenithMind: Mental Health Assistant with CBT Integration" — Vishwakarma Institute of Information Technology, Pune*
-
 ---
 
 ## 📌 Project Overview
