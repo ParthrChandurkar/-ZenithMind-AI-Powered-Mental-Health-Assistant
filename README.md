@@ -6,7 +6,7 @@
 
 ## 📌 Project Overview
 
-Mental health challenges like stress, anxiety, and disrupted sleep have become increasingly prevalent among college students and early-career professionals. Existing wellness apps address these in isolation — some focus only on meditation (Headspace, Calm), others only on chatbot conversations (Woebot, Wysa). None bring it all together.
+Mental health challenges like stress, anxiety, insomnia and disrupted sleep have become increasingly prevalent among college students and early-career professionals. Existing wellness apps address these in isolation — some focus only on meditation (Headspace, Calm), others only on chatbot conversations (Woebot, Wysa). None bring it all together.
 
 **ZenithMind bridges that gap.** It is a modular, AI-informed mental health platform that combines structured CBT techniques, real-time mood tracking, physical health data (via Google Fit), and gamified engagement — all under one cohesive interface. Built on the MERN stack with a CBT-powered AI chatbot at its core, ZenithMind aims to democratize mental wellness support in an accessible, private, and always-available format.
 
