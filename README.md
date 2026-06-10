@@ -43,26 +43,26 @@ ZenithMind was piloted with **18 participants** (undergraduate students and earl
 
 ## 🏗️ System Architecture
 
-ZenithMind follows a modular **MERN stack** architecture:
+ZenithMind uses a modular **MERN stack** architecture with a React client, Express API, MongoDB persistence, realtime community messaging, and wellness integrations.
 
-```
-┌─────────────────────────────────────────────────┐
-│                  React Frontend                  │
-│     Dashboards · Chatbot UI · Mood Logger        │
-└───────────────────┬─────────────────────────────┘
-                    │ REST API
-┌───────────────────▼─────────────────────────────┐
-│              Node.js + Express Backend           │
-│     JWT Auth · NLP Processing · API Routing      │
-└──────┬────────────────────────┬─────────────────┘
-       │                        │
-┌──────▼──────┐       ┌─────────▼────────┐
-│  MongoDB    │       │  Google Fit API  │
-│  Atlas      │       │  (OAuth 2.0)     │
-│  (User Data │       │  Steps · Sleep · │
-│  Mood Logs) │       │  Heart Rate      │
-└─────────────┘       └──────────────────┘
-```
+<p align="center">
+  <img src="./assets/architecture.svg" alt="ZenithMind system architecture diagram" width="100%" />
+</p>
+
+[Open the architecture SVG directly](./assets/architecture.svg)
+
+| Layer | Responsibility | Key modules |
+|---|---|---|
+| React Client | User, therapist, and admin interfaces with protected route access | `src/App.js`, dashboards, chatbot, trackers, games, therapist booking |
+| API Gateway | Express server, security middleware, CORS, request parsing, route mounting | `server/server.js` |
+| Authentication & Roles | JWT-based sessions with user, therapist, and admin role gates | `auth.routes.js`, `admin.auth.routes.js`, `therapist.auth.routes.js`, `middleware/auth.js` |
+| Wellness Services | Mood, sleep, stress, activity, nutrition, exercises, reports, and game scores | `server/src/routes/*`, `server/src/controllers/*` |
+| AI Layer | Gemini-powered wellness analysis and CBT-style chat/reflection support | `/api/ai`, `/api/ai/gemini`, `server/src/routes/ai.routes.js` |
+| Realtime Community | Socket.IO group rooms, live messages, and online user counts | Socket handlers in `server/server.js` |
+| Data Layer | MongoDB/Mongoose models for users, logs, appointments, chat sessions, tokens, and scores | `server/src/models/*` |
+| External Integrations | Google Fit health data and Zoom meeting links for therapist sessions | `googlefit.routes.js`, `services/zoom.js` |
+
+Primary data flow: the React app sends authenticated REST requests to Express; Express validates identity and routes each request to the relevant controller/service; MongoDB stores app state and longitudinal wellness data; Gemini, Google Fit, and Zoom are called only through backend-managed API layers; Socket.IO handles realtime community updates alongside the REST workflow.
 
 ---
 
