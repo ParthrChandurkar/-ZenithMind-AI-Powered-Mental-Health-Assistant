@@ -70,6 +70,33 @@ Primary flow:
 
 ---
 
+## API Surface
+
+The main API server starts from `server/server.js` and listens on port `7000` unless `PORT` is configured.
+
+| Route group | Purpose |
+| --- | --- |
+| `GET /api/health` | Lightweight server health check |
+| `/api/auth` | User registration, login, and account authentication |
+| `/api/admin/auth` | Admin authentication and invite-code based access |
+| `/api/therapist/auth` | Therapist onboarding and authentication |
+| `/api/admin` | Admin dashboard routes protected by admin role checks |
+| `/api/mood` | Authenticated mood entries and mood history |
+| `/api/stress` | Authenticated stress tracking workflows |
+| `/api/sleep` | Sleep logs and relaxation-related data |
+| `/api/activity` | Daily activity snapshots and reward-related activity data |
+| `/api/nutrition` | Nutrition entries and food-related wellness tracking |
+| `/api/exercises` | Mental exercise sessions and related records |
+| `/api/appointments` | Therapist appointment booking and management |
+| `/api/googlefit` | Google Fit OAuth, sync, analytics, and health-data endpoints |
+| `/api/wordscramble` | Word scramble game data and scores |
+| `/api/quickmath` | Quick math game data and scores |
+| `/api/ai` | AI analysis, chat, and Gemini-backed routes |
+
+Realtime community features use Socket.IO events including `joinGroup`, `sendMessage`, `loadMessages`, `newMessage`, `onlineUsers`, `groupFull`, and `leaveGroup`.
+
+---
+
 ## Core Features
 
 ### CBT-Informed Chatbot
