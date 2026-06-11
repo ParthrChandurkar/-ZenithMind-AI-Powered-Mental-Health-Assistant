@@ -1,215 +1,322 @@
-# 🧠 ZenithMind — AI-Powered Mental Health Assistant
+# ZenithMind - AI-Powered Mental Health Assistant
 
-> A full-stack digital mental wellness ecosystem combining **Cognitive Behavioral Therapy (CBT)**, **AI-driven mood analytics**, and **gamified self-care** — built for students and young professionals.
+ZenithMind is a full-stack mental wellness platform that combines CBT-informed chatbot support, mood and stress tracking, Google Fit insights, therapist workflows, realtime community spaces, and gamified self-care tools.
 
----
+The project is built around a React client, an Express/MongoDB API, Gemini-powered AI features, Socket.IO community messaging, and optional health-data integrations. It is designed for students and young professionals who need accessible, private, and structured support between formal care moments.
 
-## 📌 Project Overview
-
-Mental health challenges like stress, anxiety, insomnia and disrupted sleep have become increasingly prevalent among college students and early-career professionals. Existing wellness apps address these in isolation — some focus only on meditation (Headspace, Calm), others only on chatbot conversations (Woebot, Wysa). None bring it all together.
-
-**ZenithMind bridges that gap.** It is a modular, AI-informed mental health platform that combines structured CBT techniques, real-time mood tracking, physical health data (via Google Fit), and gamified engagement — all under one cohesive interface. Built on the MERN stack with a CBT-powered AI chatbot at its core, ZenithMind aims to democratize mental wellness support in an accessible, private, and always-available format.
+> Important: ZenithMind is a guided wellness and self-reflection tool. It is not a clinical diagnosis system, crisis service, or replacement for professional mental health care.
 
 ---
 
-## ✨ Key Features
+## Highlights
 
-- 🤖 **AI-Powered CBT Chatbot** — 24/7 NLP-enabled chatbot applying cognitive restructuring, thought reframing, and coping strategies in real conversation
-- 📊 **Mood & Stress Analytics Dashboard** — daily mood logs visualized as line graphs, pie charts, and weekly trends for long-term self-awareness
-- 🏃 **Google Fit Integration** — correlates physical metrics (steps, heart rate, sleep cycles) with mental states for data-driven wellness recommendations
-- 🎮 **Gamified Habit Engine** — streaks, badges, and achievement milestones to reinforce positive mental health habits
-- 🩺 **Therapist & Admin Panel** — role-based dashboards for counselors and institutions to monitor anonymized group well-being trends
-- 🔐 **Secure Authentication** — JWT-based login with role assignment (User / Admin / Therapist)
-- 📈 **Progress Reflection** — analytics-driven growth charts help users track emotional improvement over time
+| Area | What ZenithMind provides |
+| --- | --- |
+| CBT-informed AI chat | Reflective prompts, thought reframing, coping suggestions, and structured mental-health conversations |
+| Mood and stress analytics | Mood logs, stress entries, trend views, dashboard summaries, and progress reports |
+| Sleep and relaxation | Sleep tracking, calming audio, relaxation widgets, and mental exercise content |
+| Google Fit integration | Activity, sleep, and wellness signals from Google Fit, connected through backend-managed OAuth routes |
+| Therapist support | Therapist signup/login, profile management, appointment booking, prescriptions, and user appointments |
+| Admin workflows | Role-based admin authentication and dashboards for high-level user and wellness visibility |
+| Gamified mental fitness | Memory cards, sequence tap, quick math, word scramble, scores, streaks, and engagement loops |
+| Community features | Socket.IO-powered group chat with live message delivery and online user counts |
 
 ---
 
-## 🧪 Research Validation
+## Research Snapshot
 
-ZenithMind was piloted with **18 participants** (undergraduate students and early-career professionals):
+ZenithMind was piloted with 18 undergraduate students and early-career professionals.
 
 | Metric | Result |
-|---|---|
-| Users who found the system easy to use | **83%** |
-| Users who found the interface visually clear | **72%** |
-| Task completion without assistance (first-time users) | **13 / 18** |
-| CBT chatbot responses rated contextually relevant | **~66%** |
-| Users who found mood visualizations helpful | **72%** |
-| Users who reported increased daily engagement via gamification | **~70%** |
-| Average chatbot response time | **< 2–3 seconds** |
-| Dashboard visualization accuracy | **> 95%** |
+| --- | --- |
+| Users who found the system easy to use | 83% |
+| Users who found the interface visually clear | 72% |
+| Task completion without assistance by first-time users | 13 / 18 |
+| CBT chatbot responses rated contextually relevant | About 66% |
+| Users who found mood visualizations helpful | 72% |
+| Users who reported higher engagement through gamification | About 70% |
+| Average chatbot response time | Under 2-3 seconds |
+| Dashboard visualization accuracy | Over 95% |
 
 ---
 
-## 🏗️ System Architecture
+## Architecture
 
-ZenithMind uses a modular **MERN stack** architecture with a React client, Express API, MongoDB persistence, realtime community messaging, and wellness integrations.
+ZenithMind uses a modular MERN-style architecture with a React frontend, Express API, MongoDB persistence, realtime communication, and external wellness integrations.
 
 <p align="center">
   <img src="./assets/architecture.svg" alt="ZenithMind system architecture diagram" width="100%" />
 </p>
 
-[Open the architecture SVG directly](./assets/architecture.svg)
+[Open the architecture diagram directly](./assets/architecture.svg)
 
-| Layer | Responsibility | Key modules |
-|---|---|---|
-| React Client | User, therapist, and admin interfaces with protected route access | `src/App.js`, dashboards, chatbot, trackers, games, therapist booking |
-| API Gateway | Express server, security middleware, CORS, request parsing, route mounting | `server/server.js` |
-| Authentication & Roles | JWT-based sessions with user, therapist, and admin role gates | `auth.routes.js`, `admin.auth.routes.js`, `therapist.auth.routes.js`, `middleware/auth.js` |
-| Wellness Services | Mood, sleep, stress, activity, nutrition, exercises, reports, and game scores | `server/src/routes/*`, `server/src/controllers/*` |
-| AI Layer | Gemini-powered wellness analysis and CBT-style chat/reflection support | `/api/ai`, `/api/ai/gemini`, `server/src/routes/ai.routes.js` |
-| Realtime Community | Socket.IO group rooms, live messages, and online user counts | Socket handlers in `server/server.js` |
-| Data Layer | MongoDB/Mongoose models for users, logs, appointments, chat sessions, tokens, and scores | `server/src/models/*` |
-| External Integrations | Google Fit health data and Zoom meeting links for therapist sessions | `googlefit.routes.js`, `services/zoom.js` |
+| Layer | Responsibility | Important files |
+| --- | --- | --- |
+| React client | User, therapist, and admin experiences with protected navigation | `src/App.js`, `src/components/*`, `src/lib/api.js` |
+| API server | Express app, security middleware, CORS, REST routes, and Socket.IO | `server/server.js` |
+| Authentication | JWT sessions with user, therapist, and admin role handling | `server/src/routes/auth.routes.js`, `server/src/middleware/auth.js` |
+| Wellness modules | Mood, stress, sleep, nutrition, activity, exercises, reports, and game scores | `server/src/routes/*`, `server/src/controllers/*` |
+| AI layer | Gemini-backed chat, analysis, and CBT-style reflections | `server/src/routes/ai.routes.js`, `server/src/routes/gemini.routes.js` |
+| Data layer | MongoDB/Mongoose models for users, logs, sessions, appointments, tokens, and scores | `server/src/models/*` |
+| Integrations | Google Fit OAuth/data sync and Zoom meeting support for therapist sessions | `server/src/routes/googlefit.routes.js`, `server/src/services/zoom.js` |
 
-Primary data flow: the React app sends authenticated REST requests to Express; Express validates identity and routes each request to the relevant controller/service; MongoDB stores app state and longitudinal wellness data; Gemini, Google Fit, and Zoom are called only through backend-managed API layers; Socket.IO handles realtime community updates alongside the REST workflow.
+Primary flow:
 
----
-
-## 🧠 CBT Techniques Implemented
-
-ZenithMind operationalizes evidence-based CBT techniques digitally:
-
-**Cognitive Restructuring** — the chatbot guides users through identifying negative automatic thoughts and gradually reframing them toward rational viewpoints through structured questioning.
-
-**Structured Journaling** — mood logging follows a semi-automated CBT thought-record format, capturing triggers, thoughts, and emotional reactions to build pattern awareness over time.
-
-**Behavioral Activation** — when mood trends and activity indicators signal avoidance behaviors, the system suggests small, achievable actions (e.g. a 15-minute walk, a breathing session) to reinforce positive routines.
-
-**Emotional Labeling** — users categorize their emotional states, building literacy in connecting mental health patterns to lifestyle factors like sleep and activity.
+1. The React app sends authenticated requests to the Express API.
+2. Express validates identity and role permissions before calling controllers/services.
+3. MongoDB stores user records, wellness logs, chat sessions, appointments, and game scores.
+4. Gemini, Google Fit, and Zoom are called from backend-managed routes.
+5. Socket.IO keeps community rooms updated in realtime.
 
 ---
 
-## 🗂️ Project Structure
+## Core Features
 
-```
+### CBT-Informed Chatbot
+
+The AI chat experience supports cognitive restructuring, emotional labeling, guided reflection, and practical coping suggestions. The chatbot is intended to support self-awareness and healthier thought patterns, not to make clinical decisions.
+
+### Mood, Stress, and Progress Tracking
+
+Users can record emotional states, stress levels, lifestyle context, and daily progress. Dashboards and report pages turn these entries into trends that make patterns easier to recognize over time.
+
+### Health and Activity Signals
+
+Google Fit routes connect physical activity and wellness data with the broader mental-health dashboard. This makes it possible to explore relationships between activity, sleep, stress, and mood.
+
+### Therapist and Appointment Flow
+
+Therapists can manage profiles, view appointment information, and support users through booking and prescription-related workflows. Zoom support is available when the required credentials are configured.
+
+### Mental Fitness Games
+
+The app includes lightweight cognitive games such as memory cards, quick math, sequence tap, and word scramble. These add motivation and give users small, repeatable engagement loops.
+
+### Realtime Community
+
+Socket.IO group rooms allow users to join community spaces, exchange messages, and see live online counts.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Frontend | React 19, Create React App, React Router, Bootstrap, React Bootstrap, Framer Motion |
+| Backend | Node.js, Express, Socket.IO, Helmet, Morgan, Cookie Parser |
+| Database | MongoDB and Mongoose |
+| Authentication | JWT with role-aware middleware |
+| AI | Google Gemini API |
+| Health data | Google Fit REST APIs with OAuth |
+| Video meetings | Zoom server-to-server OAuth support |
+| Charts and UI | Recharts, React Icons, Lucide React |
+| Optional Python services | Mood prediction scripts under `server/` and `realtime/` |
+
+---
+
+## Project Structure
+
+```text
 zenithmind/
-│
-├── src/
-│   ├── components/         # React UI components (dashboards, chatbot, mood logger)
-│   ├── pages/              # Route-level views
-│   ├── hooks/              # Custom React hooks
-│   └── utils/              # Helper functions, constants
-│
-├── public/                 # Static assets
-├── package.json            # Frontend dependencies
-└── README.md
+|-- assets/
+|   `-- architecture.svg
+|-- public/
+|-- realtime/
+|   `-- Moodify.py
+|-- server/
+|   |-- server.js
+|   |-- index.js
+|   |-- mood_api.py
+|   |-- package.json
+|   `-- src/
+|       |-- config/
+|       |-- controllers/
+|       |-- middleware/
+|       |-- models/
+|       |-- routes/
+|       |-- services/
+|       `-- utils/
+|-- src/
+|   |-- api/
+|   |-- components/
+|   |-- context/
+|   |-- lib/
+|   `-- App.js
+|-- package.json
+|-- package-lock.json
+`-- README.md
 ```
-
-> Backend (Node.js/Express + MongoDB) is maintained in a separate repository or `/server` directory.
 
 ---
 
-## 🚀 Quick Start
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- npm or yarn
-- MongoDB Atlas account
-- Google Cloud project with Fit API enabled
+- Node.js 18 or newer
+- npm
+- MongoDB Atlas or a local MongoDB instance
+- Google Gemini API key
+- Google Cloud project with the Fitness API enabled, if using Google Fit
+- Zoom server-to-server OAuth credentials, if using meeting creation
 
-### Installation
+### Clone the repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/zenithmind.git
-cd zenithmind
+git clone https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant.git
+cd -ZenithMind-AI-Powered-Mental-Health-Assistant
+```
 
-# Install frontend dependencies
+### Install dependencies
+
+Install frontend dependencies from the project root:
+
+```bash
 npm install
+```
 
-# Start the development server
+Install backend dependencies from the `server` directory:
+
+```bash
+cd server
+npm install
+cd ..
+```
+
+### Configure environment variables
+
+Create a frontend `.env` file in the project root:
+
+```env
+REACT_APP_API_BASE=http://localhost:7000
+REACT_APP_BACKEND_URL=http://localhost:7000
+REACT_APP_MOOD_API=http://localhost:5055/api/mood/predict
+REACT_APP_GEMINI_API_KEY=
+```
+
+Create a backend `.env` file inside `server/`:
+
+```env
+PORT=7000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:3000
+ALLOWED_ORIGINS=http://localhost:3000
+
+MONGO_URI=your_mongodb_connection_string
+MONGODB_DBNAME=ZenithMind
+JWT_SECRET=replace_with_a_long_random_secret
+ADMIN_INVITE_CODE=replace_with_an_admin_invite_code
+
+GEMINI_API_KEY=your_gemini_api_key
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=http://localhost:7000/api/googlefit/oauth2callback
+
+ZOOM_ACCOUNT_ID=
+ZOOM_CLIENT_ID=
+ZOOM_CLIENT_SECRET=
+ZOOM_HOST=
+ZOOM_WEBHOOK_TOKEN=
+ZOOM_FALLBACK_HOST_EMAIL=
+```
+
+Do not commit real secrets. Keep production keys in a secure deployment environment.
+
+### Run the app
+
+Start the backend API:
+
+```bash
+cd server
+npm run dev
+```
+
+Start the React app in another terminal:
+
+```bash
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open `http://localhost:3000` in your browser. The API runs on `http://localhost:7000` by default.
 
-### Available Scripts
+---
+
+## Available Scripts
+
+Frontend scripts from the project root:
 
 | Command | Description |
-|---|---|
-| `npm start` | Run in development mode with hot reload |
-| `npm test` | Launch test runner in interactive watch mode |
-| `npm run build` | Build optimized production bundle to `/build` |
-| `npm run eject` | Eject from Create React App (irreversible) |
+| --- | --- |
+| `npm start` | Start the React development server |
+| `npm test` | Run the Create React App test runner |
+| `npm run build` | Create a production build in `build/` |
+| `npm run eject` | Eject Create React App configuration |
+
+Backend scripts from `server/`:
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Express API with Nodemon |
+| `npm start` | Start the Express API with Node |
 
 ---
 
-## ⚙️ Environment Variables
+## Mental Health Scope
 
-Create a `.env` file in the root directory:
+ZenithMind is built for wellness support, reflection, habit tracking, and educational CBT-style guidance. It should not be used as an emergency tool or as a substitute for a licensed clinician.
 
-```env
-REACT_APP_API_BASE_URL=http://localhost:5000
-REACT_APP_GOOGLE_FIT_CLIENT_ID=your_google_client_id
-REACT_APP_JWT_SECRET=your_jwt_secret
-MONGODB_URI=your_mongodb_atlas_connection_string
-```
+If a user may be in immediate danger or crisis, they should contact local emergency services or a trusted crisis helpline right away.
 
 ---
 
-## 📦 Tech Stack
+## Comparative Positioning
 
-| Layer | Technology |
-|---|---|
-| Frontend | React.js (Create React App) |
-| Backend | Node.js + Express.js |
-| Database | MongoDB Atlas (NoSQL) |
-| Authentication | JWT (JSON Web Tokens) |
-| Health Data | Google Fit REST API (OAuth 2.0) |
-| NLP / Chatbot | NLP libraries + CBT-structured prompt logic |
-| Visualization | Plotly / Recharts (mood & stress dashboards) |
+ZenithMind focuses on bringing several mental wellness workflows into one system.
 
----
-
-## 🔬 Comparative Analysis
-
-ZenithMind was benchmarked against leading mental health apps across 10 core feature dimensions:
-
-| Feature | ZenithMind | Headspace | Woebot | Wysa | Calm | Replika |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| CBT Chatbot | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ |
-| Mood Analytics Dashboard | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Google Fit / Wearable Integration | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Gamified Engagement | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
-| Therapist Panel Access | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Structured Journaling | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ |
-| Psychoeducation | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-
-ZenithMind is the only platform in this comparison to combine all seven features in a single cohesive system.
+| Feature | ZenithMind | Meditation apps | Chatbot apps | Habit apps |
+| --- | :---: | :---: | :---: | :---: |
+| CBT-informed chatbot | Yes | Limited | Yes | Limited |
+| Mood analytics dashboard | Yes | Limited | Limited | Limited |
+| Google Fit or wearable signals | Yes | Limited | Limited | Limited |
+| Therapist workflows | Yes | Limited | Limited | No |
+| Gamified mental fitness | Yes | Limited | Limited | Yes |
+| Realtime community support | Yes | Limited | Limited | Limited |
+| Structured reports | Yes | Limited | Limited | Limited |
 
 ---
 
-## ⚠️ Limitations
+## Limitations
 
-- Google Fit integration depends on third-party API reliability — delays can affect real-time insights
-- Mood entries are self-reported, introducing subjectivity in data accuracy
-- The CBT chatbot is a guided support tool, **not a replacement** for clinical diagnosis or treatment in severe cases
-- Recommendations deepen as more behavioral data accumulates — early-use suggestions may be less personalized
-- Continuous operation requires stable internet access and device permissions for Google Fit data sync
-
----
-
-## 🔭 Future Work
-
-- 🎙️ **Voice therapy module** — spoken CBT sessions using speech-to-text
-- 📡 **Passive stress prediction** — ML models on wearable signals without active user input
-- 🌍 **Multilingual & cultural localization** — adapting to Indian academic and corporate contexts
-- 🏥 **Certified therapist dashboards** — expanding clinical integration and validation
-- 📏 **Longitudinal clinical trials** — statistically rigorous validation with larger, diverse populations
+- Mood and stress entries are self-reported, so data can be subjective.
+- AI responses may be helpful but are not clinical judgments.
+- Google Fit sync depends on third-party API availability and user permissions.
+- Personalized insights improve as more user history becomes available.
+- Production deployments need strong secret management, HTTPS, monitoring, and data-privacy review.
 
 ---
 
-## 📄 Research Paper
+## Roadmap
 
-This project is documented in a peer-reviewed research paper:
-
-> **"ZenithMind: Mental Health Assistant with CBT Integration"**
-> Aditya Badgujar, Prathamesh Walishetty, Parth Chandurkar, Anurag Gupta *(VIIT Pune)* · Riddhi Mirajkar *(VIT Pune)* · Rishikaysh Kaakandikar *(SBIMS Pune)*
+- Voice-based reflection and CBT sessions
+- Passive stress prediction from wearable signals
+- Deeper multilingual and culturally localized wellness content
+- Expanded therapist dashboards and institutional reporting
+- Larger longitudinal validation studies
+- More robust safety escalation and crisis-resource routing
 
 ---
 
-## 📜 License
+## Research Paper
 
-This project is developed for academic research purposes. See `LICENSE` for details.
+This project is documented in the research paper:
+
+> "ZenithMind: Mental Health Assistant with CBT Integration"
+>
+> Aditya Badgujar, Prathamesh Walishetty, Parth Chandurkar, Anurag Gupta (VIIT Pune), Riddhi Mirajkar (VIT Pune), and Rishikaysh Kaakandikar (SBIMS Pune)
+
+---
+
+## License
+
+This project is developed for academic and research purposes. See `LICENSE` for details if a license file is added to the repository.
