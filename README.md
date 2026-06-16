@@ -240,7 +240,21 @@ cd ..
 
 ### Configure environment variables
 
-Create a frontend `.env` file in the project root:
+Start from the included templates:
+
+```bash
+cp .env.example .env
+cp server/.env.example server/.env
+```
+
+Configure the frontend `.env` file in the project root:
+
+| Variable | Purpose | Required |
+| --- | --- | --- |
+| `REACT_APP_API_BASE` | Base URL for REST API requests, usually `http://localhost:7000` | Yes |
+| `REACT_APP_BACKEND_URL` | Socket.IO backend URL for community features | Yes |
+| `REACT_APP_MOOD_API` | Optional Python mood prediction service URL | Optional |
+| `REACT_APP_GEMINI_API_KEY` | Browser-side Gemini fallback for legacy chat components | Optional |
 
 ```env
 REACT_APP_API_BASE=http://localhost:7000
@@ -249,7 +263,22 @@ REACT_APP_MOOD_API=http://localhost:5055/api/mood/predict
 REACT_APP_GEMINI_API_KEY=
 ```
 
-Create a backend `.env` file inside `server/`:
+Configure the backend `.env` file inside `server/`:
+
+| Variable | Purpose | Required |
+| --- | --- | --- |
+| `PORT` | Express API port, defaults to `7000` | No |
+| `NODE_ENV` | Runtime mode, usually `development` or `production` | Yes |
+| `FRONTEND_URL` | Primary frontend origin for CORS | Yes |
+| `ALLOWED_ORIGINS` | Comma-separated production CORS allowlist | Production |
+| `MONGO_URI` | MongoDB connection string | Yes |
+| `MONGODB_DBNAME` | Database name, defaults to `ZenithMind` | No |
+| `JWT_SECRET` | Secret used to sign user, therapist, and admin tokens | Yes |
+| `ADMIN_INVITE_CODE` | Invite code required for admin registration/access | Yes |
+| `GEMINI_API_KEY` | Server-side Gemini key for AI routes | Yes for AI |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI` | Google Fit OAuth configuration | For Google Fit |
+| `ZOOM_ACCOUNT_ID`, `ZOOM_CLIENT_ID`, `ZOOM_CLIENT_SECRET`, `ZOOM_HOST` | Zoom meeting creation credentials | For Zoom |
+| `ZOOM_WEBHOOK_TOKEN`, `ZOOM_FALLBACK_HOST_EMAIL` | Optional Zoom webhook and fallback host settings | Optional |
 
 ```env
 PORT=7000
@@ -276,7 +305,7 @@ ZOOM_WEBHOOK_TOKEN=
 ZOOM_FALLBACK_HOST_EMAIL=
 ```
 
-Do not commit real secrets. Keep production keys in a secure deployment environment.
+Do not commit real secrets. Keep production keys in a secure deployment environment, use a long random `JWT_SECRET`, and remember that any `REACT_APP_*` value is exposed to the browser bundle.
 
 ### Run the app
 
