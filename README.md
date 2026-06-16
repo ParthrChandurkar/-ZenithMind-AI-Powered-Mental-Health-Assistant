@@ -178,6 +178,34 @@ zenithmind/
 
 ## Getting Started
 
+### Quick local setup
+
+Use this path when you want to run the full app locally for development:
+
+```bash
+git clone https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant.git
+cd -ZenithMind-AI-Powered-Mental-Health-Assistant
+npm install
+cd server
+npm install
+cd ..
+cp server/.env.example server/.env
+cp .env.example .env
+```
+
+After filling in the required values, start the API from `server/` and the React app from the project root in separate terminals:
+
+```bash
+cd server
+npm run dev
+```
+
+```bash
+npm start
+```
+
+The frontend opens at `http://localhost:3000`, and the backend health check is available at `http://localhost:7000/api/health`.
+
 ### Prerequisites
 
 - Node.js 18 or newer
