@@ -346,6 +346,44 @@ Backend scripts from `server/`:
 
 ---
 
+## Development Checks
+
+Use these checks before opening a pull request or deploying a build:
+
+| Check | Command |
+| --- | --- |
+| Frontend production build | `npm run build` |
+| Frontend test runner | `npm test -- --watchAll=false` |
+| Backend boot check | `cd server && npm start` |
+| API health check | Open `http://localhost:7000/api/health` after the server starts |
+
+For feature changes, also smoke test the affected user flow in the browser, such as chatbot messaging, mood logging, appointment booking, Google Fit connection, or community chat.
+
+---
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| Frontend cannot reach the API | Confirm `REACT_APP_API_BASE`, `REACT_APP_BACKEND_URL`, and the backend port match |
+| MongoDB connection fails | Verify `MONGO_URI`, network access, database credentials, and IP allowlisting |
+| AI routes return configuration errors | Ensure `GEMINI_API_KEY` is set in `server/.env` |
+| Google Fit OAuth fails | Confirm Fitness API access, OAuth consent settings, and `GOOGLE_REDIRECT_URI` |
+| Community chat does not update live | Check that Socket.IO can connect to the backend URL and CORS origin |
+| Zoom meeting creation fails | Verify server-to-server OAuth credentials and fallback host settings |
+
+---
+
+## Contributing
+
+1. Create a focused branch for the change.
+2. Keep updates scoped to one feature, fix, or documentation improvement.
+3. Update the README or environment examples when setup behavior changes.
+4. Run the relevant development checks before committing.
+5. Avoid committing secrets, generated build folders, local logs, or private health data.
+
+---
+
 ## Mental Health Scope
 
 ZenithMind is built for wellness support, reflection, habit tracking, and educational CBT-style guidance. It should not be used as an emergency tool or as a substitute for a licensed clinician.
