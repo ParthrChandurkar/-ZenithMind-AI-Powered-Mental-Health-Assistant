@@ -1,5 +1,7 @@
 # ZenithMind - AI-Powered Mental Health Assistant
 
+[![Published on IEEE Xplore](https://img.shields.io/badge/Published-IEEE%20Xplore-00629B?logo=ieee&logoColor=white)](https://ieeexplore.ieee.org/document/11566649)
+
 ZenithMind is a full-stack mental wellness platform that combines CBT-informed chatbot support, mood and stress tracking, Google Fit insights, therapist workflows, realtime community spaces, and gamified self-care tools.
 
 The project is built around a React client, an Express/MongoDB API, Gemini-powered AI features, Socket.IO community messaging, and optional health-data integrations. It is designed for students and young professionals who need accessible, private, and structured support between formal care moments.
