@@ -6,6 +6,8 @@ ZenithMind is a full-stack mental wellness platform that combines CBT-informed c
 
 The project is built around a React client, an Express/MongoDB API, Gemini-powered AI features, Socket.IO community messaging, and optional health-data integrations. It is designed for students and young professionals who need accessible, private, and structured support between formal care moments.
 
+The associated ZenithMind research paper is published on IEEE Xplore and is available at [IEEE document 11566649](https://ieeexplore.ieee.org/document/11566649).
+
 > Important: ZenithMind is a guided wellness and self-reflection tool. It is not a clinical diagnosis system, crisis service, or replacement for professional mental health care.
 
 ---
