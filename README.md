@@ -41,6 +41,7 @@ ZenithMind was piloted with 18 undergraduate students and early-career professio
 | Users who reported higher engagement through gamification | About 70% |
 | Average chatbot response time | Under 2-3 seconds |
 | Dashboard visualization accuracy | Over 95% |
+| Publication status | Published on IEEE Xplore as [document 11566649](https://ieeexplore.ieee.org/document/11566649) |
 
 ---
 
