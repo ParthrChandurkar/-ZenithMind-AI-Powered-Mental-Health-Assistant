@@ -435,11 +435,13 @@ ZenithMind focuses on bringing several mental wellness workflows into one system
 
 ## Research Paper
 
-This project is documented in the research paper:
+This project is documented in an IEEE Xplore published research paper:
 
 > "ZenithMind: Mental Health Assistant with CBT Integration"
 >
 > Aditya Badgujar, Prathamesh Walishetty, Parth Chandurkar, Anurag Gupta (VIIT Pune), Riddhi Mirajkar (VIT Pune), and Rishikaysh Kaakandikar (SBIMS Pune)
+
+Official IEEE Xplore record: [https://ieeexplore.ieee.org/document/11566649](https://ieeexplore.ieee.org/document/11566649)
 
 ---
 
